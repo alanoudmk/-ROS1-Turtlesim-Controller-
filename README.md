@@ -18,7 +18,7 @@ Before we begin, ensure that you have the following:
 
 *****
 
-#Getting Started
+# Getting Started
 
 
-**Running the Turtlesim Node
+## Running the Turtlesim Node
