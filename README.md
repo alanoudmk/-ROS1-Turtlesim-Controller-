@@ -51,14 +51,21 @@ $ roscore
 ### 3.1 Running the Turtlesim Node:
 - Open a new **Terminal** window.
   > Ctrl + Alt + T
-- Run the following command:
+
+- To install and start the turtlesim:
+
+    ```
+    $ sudo apt-get install ros-$(rosversion -d)-turtlesim
+    ```
+    
+- Run turtlesim:
   
-```
-$ rosrun turtlesim turtlesim_node
-```
+    ```
+    $ rosrun turtlesim turtlesim_node
+    ```
 
 
-  <img src="https://github.com/alanoudmk/-ROS1-Turtlesim-Controller-/assets/127528672/fdad8652-51ab-4a28-8672-dc1a50751de2" width="420" height="120">
+  <img src="https://github.com/alanoudmk/-ROS1-Turtlesim-Controller-/assets/127528672/fdad8652-51ab-4a28-8672-dc1a50751de2" width="420" height="100">
 
 - This will start the Turtlesim node, which is the main node that controls the Turtlesim simulation
 
@@ -113,10 +120,10 @@ $ rosrun turtlesim turtle_teleop_key
 
 
 
-*****
+***
 
 
-##  **<mark> Improve your knowledge: <mark>**
+###  **<mark> Improve your knowledge: <mark>**
 
 - Open a new **Terminal** window.
   > Ctrl + Alt + T
@@ -146,3 +153,112 @@ $ rqt_graph
 
 
 -  <mark> This visualization is very useful for understanding the ROS architecture, debugging issues, and gaining insights into the system's behavior, especially when working with more complex ROS setups. <mark>
+
+
+
+
+
+
+
+
+
+
+*****
+
+# ROS Noetic's Turtlesim: Diverse Commands for Simulation Manipulation
+
+
+### 1. Control the turtle's movement using the keyboard:
+```
+    $ rosrun turtlesim turtle_teleop_key
+ ```
+    
+- The node publishes velocity commands to the /turtle1/cmd_vel topic, which the turtlesim_node subscribes to, causing the turtle to move.
+
+***
+
+### 2. Draw a Square:
+ ```
+    $ rosrun turtlesim draw_square 
+```
+
+<img src="https://github.com/alanoudmk/-ROS1-Turtlesim-Controller-/assets/127528672/3a4d8d93-7051-4839-9941-c7b918bbf11c" width="230" height="200">
+
+
+- rosrun: a ROS command that allows you to run a specific node (a program in ROS) from the command line.
+- turtlesim: name of the package that contains the draw_square node.
+- draw_square: This is the name of the node that you're running, which is responsible for making the turtle draw a square.
+
+
+
+***
+
+### 3. Reset the Turtle:
+```
+    $ rosservice call /reset
+```
+
+
+***
+
+### 4. Spawn a New Turtle:
+
+ ```
+    $ rosservice call /spawn 2 2 0.2 turtle2
+ ```
+
+- This command calls the /spawn service, which creates a new turtle at the specified (x, y, theta) location and with the given name.
+
+<img src="https://github.com/alanoudmk/-ROS1-Turtlesim-Controller-/assets/127528672/1f1994c5-9889-4f1e-9935-dd31c2bfe92e" width="230" height="200">
+
+
+
+***
+
+### 5. Kill a Turtle:
+ ```
+    $ rosservice call /kill turtle2
+ ```
+
+- This command calls the /kill service, which removes the turtle with the specified name.
+
+<img src="https://github.com/alanoudmk/-ROS1-Turtlesim-Controller-/assets/127528672/13a53dea-4ada-4ab8-8f8d-2ff8be2c8a5d" width="230" height="200">
+
+
+
+***
+
+### 6. Teleport the Turtle Absolutely:
+ ```
+    $ rosservice call /turtle1/teleport_absolute x y theta
+ ```
+
+- The x, y, and theta parameters represent the desired absolute position and orientation for the turtle.
+- Ex:
+
+```
+    $ rosservice call /turtle1/teleport_absolute 2.0 3.0 1.57
+```
+
+- This command will teleport the turtle to the position (2.0, 3.0) with an orientation of 1.57 radians (approximately 90 degrees).
+  
+<img src="https://github.com/alanoudmk/-ROS1-Turtlesim-Controller-/assets/127528672/8009be1e-eead-42d3-b69d-697ee5dc868e" width="230" height="200">
+
+
+
+
+***
+
+### 7. Get the Logger Levels:
+ ```
+    $ rosservice call /turtlesim/get_loggers
+ ```
+
+- This command will return the current logger levels for the turtlesim node.
+- Response will be a list of the logger names and their corresponding levels.
+- Information can be useful for debugging and understanding the logging output of the turtlesim node.
+
+<img src="https://github.com/alanoudmk/-ROS1-Turtlesim-Controller-/assets/127528672/df8538fb-2af7-44ae-97b4-fbe54df45fc8" width="230" height="200">
+
+
+
