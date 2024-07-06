@@ -73,7 +73,7 @@ $ roscore
 
 ***
 
-### 3.2
+### 3.2 ROS Qt:
 - Open a new **Terminal** window.
   > Ctrl + Alt + T
 - Run the following command:
